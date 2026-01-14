@@ -2,10 +2,30 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    public function login(Request $res){
+                $data=$res->validate([
+                    'email'=>'required',
+                    'password'=>'required'
+                ]);
+
+                if(Auth::attempt($data)){
+                    return redirect()->route('users.index')->with('success', 'Logged in successfully');
+                }else{
+                     return redirect('/')->with('error', 'Invalid email or password');
+                }
+    }
+
+    
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/')->with('success', 'Logged out successfully');
+    }
     /**
      * Display a listing of the resource.
      */

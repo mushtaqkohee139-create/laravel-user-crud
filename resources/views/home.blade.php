@@ -16,7 +16,7 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link text-light" href="#">Home</a></li>
                 <li class="nav-item"><a class="nav-link text-light" href="#">Profile</a></li>
-                <li class="nav-item"><a class="nav-link text-danger" href="">Logout</a></li>
+                <li class="nav-item"><a class="nav-link text-danger" href="{{route('logout')}}">Logout</a></li>
             </ul>
         </div>
     </div>
