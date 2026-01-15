@@ -14,5 +14,5 @@ Route::get('/userpage', function () {
 })->name('userpage')->middleware('auth');
 
 Route::post('/login',[UserController::class,'login'])->name('login');
-Route::get('/logout',[UserController::class,'logout'])->name('logout');
+Route::post('/logout',[UserController::class,'logout'])->name('logout');
 //Route::resource('/adduser', UserController::class);

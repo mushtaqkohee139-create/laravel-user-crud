@@ -31,10 +31,12 @@
                     </span>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('logout') }}" class="nav-link text-white"
-                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        Logout
-                    </a>
+                <a href="{{ route('logout') }}" 
+                    class="btn btn-danger btn-sm ms-2"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    Logout
+                </a>
+
                 </li>
             </ul>
         </div>
