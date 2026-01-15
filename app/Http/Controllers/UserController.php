@@ -51,20 +51,20 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
-        $data=$request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'age' => 'required|integer',
-            'role'=>'required|in:user,admin',
-            'password' => 'required|confirmed|min:6',
+         $data = $request->validate([
+        'name' => 'required',
+        'email' => 'required|email|unique:users',
+        'age' => 'required|integer',
+        'role' => 'required|in:user,admin',
+        'password' => 'required|confirmed|min:6',
+    ]);
 
-        ]);
-
-        User::create([
+    // Create user
+    User::create([
         'name' => $request->name,
         'email' => $request->email,
         'age' => $request->age,
-        'role'=>$request->role,
+        'role' => $request->role,
         'password' => bcrypt($request->password),
     ]);
 
@@ -104,15 +104,18 @@ class UserController extends Controller
         'name'  => 'required',
         'email' => 'required|email|unique:users,email,' . $id,
         'age'   => 'required|integer',
+        'image' => 'nullable|image'
     ]);
 
+    // Find the user
     $user = User::findOrFail($id);
 
-    $user->update([
-        'name'  => $request->name,
-        'email' => $request->email,
-        'age'   => $request->age,
-    ]);
+    // Update other fields
+    $user->name  = $request->name;
+    $user->email = $request->email;
+    $user->age   = $request->age;
+
+    $user->save();
 
     return redirect()->route('users.index')
                      ->with('success', 'User updated successfully');

@@ -1,9 +1,9 @@
+<!-- resources/views/users/edit.blade.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Edit User</title>
-
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -19,7 +19,8 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{route('users.update',$edituser->id)}}">
+                    <!-- Add enctype for file upload -->
+                    <form method="POST" action="{{ route('users.update', $edituser->id) }}">
                         @csrf
                         @method('PUT')
 
@@ -29,7 +30,7 @@
                             <input type="text"
                                    name="name"
                                    class="form-control"
-                                   value="{{ old('name',$edituser->name) }}"
+                                   value="{{ old('name', $edituser->name) }}"
                                    required>
                         </div>
 
@@ -39,7 +40,7 @@
                             <input type="email"
                                    name="email"
                                    class="form-control"
-                                   value="{{ old('email',$edituser->email) }}"
+                                   value="{{ old('email', $edituser->email) }}"
                                    required>
                         </div>
 
@@ -49,7 +50,7 @@
                             <input type="number"
                                    name="age"
                                    class="form-control"
-                                   value="{{ old('age',$edituser->age) }}"
+                                   value="{{ old('age', $edituser->age) }}"
                                    required>
                         </div>
 
