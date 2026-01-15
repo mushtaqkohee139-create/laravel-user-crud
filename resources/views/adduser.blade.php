@@ -41,6 +41,15 @@
                             <input type="number" name="age" class="form-control" value="{{ old('age') }}" required>
                         </div>
 
+                        <div class="mb-3">
+                            <label class="form-label">Role</label>
+                            <select name="role" class="form-select" required>
+                                <option value="">-- Select Role --</option>
+                                <option value="user" {{ old('role') == 'user' ? 'selected' : '' }}>User</option>
+                                <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
+                            </select>
+                        </div>
+
                         <!-- Password -->
                         <div class="mb-3">
                             <label class="form-label">Password</label>

@@ -55,6 +55,7 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'age' => 'required|integer',
+            'role'=>'required|in:user,admin',
             'password' => 'required|confirmed|min:6',
 
         ]);
@@ -63,6 +64,7 @@ class UserController extends Controller
         'name' => $request->name,
         'email' => $request->email,
         'age' => $request->age,
+        'role'=>$request->role,
         'password' => bcrypt($request->password),
     ]);
 
